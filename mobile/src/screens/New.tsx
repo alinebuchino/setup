@@ -24,17 +24,15 @@ export function New() {
   async function handleCreateNewHabit() {
     try {
       if (!title.trim() || weekDays.length === 0) {
-        Alert.alert('Novo hábito', 'Informe o nome do hábito e escolha a periodicidade.')
+        return Alert.alert('Novo hábito', 'Informe o nome do hábito e escolha a periodicidade.')
       }
 
-      if (title.trim() || weekDays.length !== 0) {
         await api.post('/habits', { title, weekDays })
 
         setTitle('');
         setWeekDays([]);
 
         Alert.alert('Novo hábito', 'Hábito criado com sucesso!');
-      }
 
     } catch (error) {
       console.log(error)
